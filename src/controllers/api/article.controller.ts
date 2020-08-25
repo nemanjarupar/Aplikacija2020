@@ -1,14 +1,15 @@
 import { Controller, Post, Body, Param, UseInterceptors, UploadedFile, Req } from "@nestjs/common";
 import { Crud } from "@nestjsx/crud";
 import { ArticleService } from "src/services/article/article.service";
-import { Article } from "entities/article.entity";
+import { Article } from "src/entities/article.entity";
 import { AddArticleDto } from "src/dtos/article/add.article.dto";
 import { FileInterceptor } from '@nestjs/platform-express';
 import { StorageConfig } from "config/storage.config";
 import { diskStorage } from "multer";
 import { PhotoService } from "src/services/photo/photo.service";
-import { Photo } from "entities/photo.entity";
+import { Photo } from "src/entities/photo.entity";
 import { ApiResponse } from "src/misc/api.response.class";
+import * as fileType from "file-type";
 
 @Controller('api/article')
 @Crud({
@@ -58,7 +59,7 @@ export class ArticleController {
     @UseInterceptors(
         FileInterceptor('photo', {
             storage: diskStorage({
-                destination: StorageConfig.photoDestination,
+                destination: StorageConfig.photo.destination,
                 filename: (req, file, callback) => {
 
                     let original: string = file.originalname;
@@ -103,7 +104,7 @@ export class ArticleController {
             },
             limits: {
                 files: 1,
-                fileSize: StorageConfig.photoMaxFileSize,
+                fileSize: StorageConfig.photo.maxSize,
             },
 
         })
@@ -136,4 +137,6 @@ export class ArticleController {
         return savedPhoto; 
 
     }
+
+    
 }
