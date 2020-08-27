@@ -31,20 +31,20 @@ export class AuthController {
             return new Promise(resolve => resolve(new ApiResponse('error', -3002)));
         }
 
-        const jwData = new JwtDataAdministratorDto();
-        jwData.administratorId = administrator.administratorId;
-        jwData.username = administrator.username;
+        const jwtData = new JwtDataAdministratorDto();
+        jwtData.administratorId = administrator.administratorId;
+        jwtData.username = administrator.username;
 
         let sada = new Date();
         sada.setDate(sada.getDate() + 14);
         const istekTimestamp = sada.getTime() / 1000;
-        jwData.ext = istekTimestamp;
+        jwtData.exp = istekTimestamp;
 
-        jwData.ip = req.ip.toString();
-        jwData.ua = req.headers["user-agent"];
+        jwtData.ip = req.ip.toString();
+        jwtData.ua = req.headers["user-agent"];
 
         
-        let token: string = jwt.sign(jwData.toPlainObject(), jwtSecret);
+        let token: string = jwt.sign(jwtData.toPlainObject(), jwtSecret);
 
         const responseObject = new LoginInfoAdministratorDto(
             administrator.administratorId,

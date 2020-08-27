@@ -61,7 +61,7 @@ export class ArticleController {
     @UseInterceptors(
         FileInterceptor('photo', {
             storage: diskStorage({
-                destination: StorageConfig.photoDestination,
+                destination: StorageConfig.photo.destination,
                 filename: (req, file, callback) => {
 
                     let original: string = file.originalname;
@@ -106,7 +106,7 @@ export class ArticleController {
             },
             limits: {
                 files: 1,
-                fileSize: StorageConfig.photoMaxFileSize,
+                fileSize: StorageConfig.photo.maxSize,
             },
 
         })
@@ -140,8 +140,8 @@ export class ArticleController {
 
         }
 
-        await this.createThumb(photo);  
-        await this.createSmallImage(photo);    
+        await this.createResizedImage(photo, StorageConfig.photo.resize.thumb);
+        await this.createResizedImage(photo, StorageConfig.photo.resize.small);   
 
         const newPhoto: Photo = new Photo();
         newPhoto.articleId = articleId;
@@ -158,44 +158,30 @@ export class ArticleController {
 
     }
 
-    async createThumb(photo) {
-        const originalFilePath = photo.path;
-        const fileName = photo.filename;
+    
 
-        const destinationFilePath = StorageConfig.photoDestination + "thumb/" + fileName;
+    async createResizedImage(photo, resizeSettings) {
 
-        await sharp(originalFilePath)
-            .resize ({
-                fit: 'cover',
-                width: StorageConfig.photoThumbSize.width,
-                height: StorageConfig.photoThumbSize.height,
-                background: {
-                    r: 255, g:255, b:255, alpha: 0.0
-                }
-            })
-            .toFile(destinationFilePath);
+            const originalFilePath = photo.path;
+            const fileName = photo.filename;
+    
+            const destinationFilePath = 
+            StorageConfig.photo.destination +
+            resizeSettings.directory + 
+            fileName;
+    
+            await sharp(originalFilePath)
+                .resize ({
+                    fit: 'cover',
+                    width: resizeSettings.width,
+                    height: resizeSettings.height,
+                    
+                })
+                .toFile(destinationFilePath);
+    
+        }
 
-    }
-
-    async createSmallImage(photo) {
-
-        const originalFilePath = photo.path;
-        const fileName = photo.filename;
-
-        const destinationFilePath = StorageConfig.photoDestination + "small/" + fileName;
-
-        await sharp(originalFilePath)
-            .resize ({
-                fit: 'cover',
-                width: StorageConfig.photoSmallSize.width,
-                height: StorageConfig.photoSmallSize.height,
-                background: {
-                    r: 255, g:255, b:255, alpha: 0.0
-                }
-            })
-            .toFile(destinationFilePath);
-
-    }
+    
         
     }
   
