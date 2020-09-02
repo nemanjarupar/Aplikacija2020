@@ -30,6 +30,7 @@ import { CartService } from './services/cart/cart.service';
 import { UserCartController } from './controllers/api/user.cart.controller';
 import { OrderService } from './services/order/order.service';
 import { AdministratorOrderController } from './controllers/api/administrator.order.controller';
+import { UserToken } from './entities/user-token.entity';
 
 
 @Module({
@@ -53,6 +54,7 @@ import { AdministratorOrderController } from './controllers/api/administrator.or
         Order,
         Photo,
         User,
+        UserToken,
       ]
     }),
     TypeOrmModule.forFeature([ 
@@ -67,6 +69,7 @@ import { AdministratorOrderController } from './controllers/api/administrator.or
         Order,
         Photo,
         User,
+        UserToken,
      ])
   ],
   controllers: [
