@@ -396,6 +396,16 @@
 					]
 				}
 			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlkIjoxMCwiaWRlbnRpdHkiOiJhZG1pbiIsImV4cCI6MTYwMDM1MzgxNy43MDUsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI2LjUiLCJpYXQiOjE2MDAzNTM1MTd9.S2Te6lwryKY_pwzbJOUeV_gQT6zrEWCi9jrkN-fGZzY",
+						"type": "string"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -771,6 +781,85 @@
 							]
 						}
 					},
+					"response": [
+						{
+							"name": "Get a single article when the article does not exist",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/article/27/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"article",
+										"27",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-sm95f/qX4pTe+Gdc0icUf43I0KI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 13 Sep 2020 13:30:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Article not found\",\n    \"error\": \"Not Found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get many articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/article/5/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"article",
+								"5",
+								""
+							]
+						}
+					},
 					"response": []
 				},
 				{
@@ -1035,8 +1124,29 @@
 							"body": "{\n    \"articleId\": 2,\n    \"name\": \"ACME HD11 1024GB\",\n    \"categoryId\": 1,\n    \"excerpt\": \"Neki kratak tekst 2...\",\n    \"description\": \"Neki duzi tekst o proizvodi 2...\",\n    \"status\": \"visible\",\n    \"isPromoted\": 1,\n    \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n    \"category\": {\n        \"categoryId\": 1,\n        \"name\": \"test\",\n        \"imagePath\": \"test\",\n        \"parentCategoryId\": 1\n    },\n    \"articleFeatures\": [\n        {\n            \"articleFeatureId\": 10,\n            \"articleId\": 2,\n            \"featureId\": 1,\n            \"value\": \"1024gb\"\n        },\n        {\n            \"articleFeatureId\": 11,\n            \"articleId\": 2,\n            \"featureId\": 2,\n            \"value\": \"SATA 3.0\"\n        }\n    ],\n    \"features\": [\n        {\n            \"featureId\": 1,\n            \"name\": \"Kapacitet\",\n            \"categoryId\": 3\n        },\n        {\n            \"featureId\": 2,\n            \"name\": \"Tip\",\n            \"categoryId\": 3\n        }\n    ],\n    \"articlePrices\": [\n        {\n            \"articlePriceId\": 3,\n            \"articleId\": 2,\n            \"price\": \"56.77\",\n            \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n        },\n        {\n            \"articlePriceId\": 6,\n            \"articleId\": 2,\n            \"price\": \"57.11\",\n            \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n        }\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "Search articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlkIjoxMCwiaWRlbnRpdHkiOiJhZG1pbiIsImV4cCI6MTYwMDM1NjA5My45NDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI2LjUiLCJpYXQiOjE2MDAzNTU3OTN9.Jxa1-Wh48aKe9v4hy-GPBEUa86eGsk0tzeYqfcr2RiI",
+						"type": "string"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1071,8 +1181,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -1080,7 +1190,7 @@
 							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3000/auth/login/",
+							"raw": "http://localhost:3000/auth/administrator/login/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1088,6 +1198,7 @@
 							"port": "3000",
 							"path": [
 								"auth",
+								"administrator",
 								"login",
 								""
 							]
@@ -1286,16 +1397,16 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}"
+							"raw": "{\r\n    \"email\": \"test@test.rs\",\r\n    \"password\": \"abc\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3000/auth/login/",
+							"raw": "http://localhost:3000/auth/user/login/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1303,6 +1414,7 @@
 							"port": "3000",
 							"path": [
 								"auth",
+								"user",
 								"login",
 								""
 							]
@@ -1317,7 +1429,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"test@test.rs\",\r\n    \"password\": \"abc\",\r\n    \"forename\": \"Pera\",\r\n    \"surname\": \"Peric\",\r\n    \"phoneNumber\": \"+381631458753\",\r\n    \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\r\n}",
+							"raw": "{\r\n    \"email\": \"test123@test.rs\",\r\n    \"password\": \"ab343223c\",\r\n    \"forename\": \"Nikola\",\r\n    \"surname\": \"Nikolic\",\r\n    \"phoneNumber\": \"+381657654875\",\r\n    \"postalAddress\": \"Test adresa bb, Glavna Luka, Nedodjija\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1337,6 +1449,17 @@
 								"register",
 								""
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh user token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
 					},
 					"response": []
@@ -1754,6 +1877,495 @@
 							"body": "{\n    \"featureId\": 4,\n    \"name\": \"Napon\",\n    \"categoryId\": 2,\n    \"category\": {\n        \"categoryId\": 2,\n        \"name\": \"tesfe\",\n        \"imagePath\": \"0tee\",\n        \"parentCategoryId\": 1\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "Get distinct values for the features of a single category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/feature/values/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feature",
+								"values",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get distinct values for the features of a single category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/feature/values/2/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"feature",
+										"values",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "160"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a0-f5cgW3Rypt7wZ41LaDXBWgikyT0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Sep 2020 15:55:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"features\": [\n        {\n            \"featureId\": 3,\n            \"name\": \"Tehn.\",\n            \"values\": [\n                \"550\",\n                \"SSD\"\n            ]\n        },\n        {\n            \"featureId\": 4,\n            \"name\": \"Napon\",\n            \"values\": []\n        },\n        {\n            \"featureId\": 5,\n            \"name\": \"Radni napon\",\n            \"values\": []\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cart and Order",
+			"item": [
+				{
+					"name": "Get current cart details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/cart/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add article to the current cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"articleId\": 1,\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/cart/addToCart/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"cart",
+								"addToCart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change article quantity in the current cart",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"articleId\": 2,\r\n    \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/cart/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Make an order for the current cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/cart/makeOrder/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"cart",
+								"makeOrder",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "db493ced-fff1-46b5-8890-d061f9ce4b4d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9517d338-df7c-4933-ad59-72c2f8dc6062",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get order information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get order information",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/order/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1710"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6ae-+RXjXOaZHDttUpuYJzneBivLLf0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Sep 2020 17:05:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"orderId\": 1,\n    \"createdAt\": \"2020-08-31T18:13:22.000Z\",\n    \"cartId\": 1,\n    \"status\": \"shipped\",\n    \"cart\": {\n        \"cartId\": 1,\n        \"userId\": 1,\n        \"createdAt\": \"2020-08-31T17:31:56.000Z\",\n        \"user\": {\n            \"userId\": 1,\n            \"email\": \"test@test.rs\",\n            \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n            \"forename\": \"Pera\",\n            \"surname\": \"0\",\n            \"phoneNumber\": \"+381631458753\",\n            \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n        },\n        \"cartArticles\": [\n            {\n                \"cartArticleId\": 1,\n                \"cartId\": 1,\n                \"articleId\": 1,\n                \"quantity\": 5,\n                \"article\": {\n                    \"articleId\": 1,\n                    \"name\": \"WHIRLPOOL Mašina za pranje veša FWL61252W\",\n                    \"categoryId\": 4,\n                    \"excerpt\": \"0fewfwe\",\n                    \"description\": \"Energetski razred: A++ \\r\\nKapacitet pranja: 6kg\\r\\nBroj obrtaja centrifuge:1200 obr/min\\r\\nNivo buke:63 dB\",\n                    \"status\": \"available\",\n                    \"isPromoted\": 1,\n                    \"createdAt\": \"2020-08-20T20:14:19.000Z\",\n                    \"category\": {\n                        \"categoryId\": 4,\n                        \"name\": \"Ves Masine\",\n                        \"imagePath\": \"0test\",\n                        \"parentCategoryId\": 1\n                    },\n                    \"articlePrices\": [\n                        {\n                            \"articlePriceId\": 1,\n                            \"articleId\": 1,\n                            \"price\": \"45.00\",\n                            \"createdAt\": \"2020-08-20T21:20:01.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 2,\n                            \"articleId\": 1,\n                            \"price\": \"43.00\",\n                            \"createdAt\": \"2020-08-20T21:20:15.000Z\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"cartArticleId\": 2,\n                \"cartId\": 1,\n                \"articleId\": 2,\n                \"quantity\": 2,\n                \"article\": {\n                    \"articleId\": 2,\n                    \"name\": \"ACME HD11 1024GB\",\n                    \"categoryId\": 1,\n                    \"excerpt\": \"Neki kratak tekst 2...\",\n                    \"description\": \"Neki duzi tekst o proizvodi 2...\",\n                    \"status\": \"visible\",\n                    \"isPromoted\": 1,\n                    \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n                    \"category\": {\n                        \"categoryId\": 1,\n                        \"name\": \"Bela Tehnika\",\n                        \"imagePath\": \"test\",\n                        \"parentCategoryId\": null\n                    },\n                    \"articlePrices\": [\n                        {\n                            \"articlePriceId\": 3,\n                            \"articleId\": 2,\n                            \"price\": \"56.77\",\n                            \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 6,\n                            \"articleId\": 2,\n                            \"price\": \"57.11\",\n                            \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Change order status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newStatus\": \"rejected\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/order/5/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"5",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change order status",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"newStatus\": \"accepted\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/order/4/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1053"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41d-S8SZZeb/hkIfnTHvxYIqIXk8JqA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Sep 2020 17:17:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"orderId\": 4,\n    \"createdAt\": \"2020-08-31T20:13:07.000Z\",\n    \"cartId\": 3,\n    \"status\": \"accepted\",\n    \"cart\": {\n        \"cartId\": 3,\n        \"userId\": 1,\n        \"createdAt\": \"2020-08-31T20:12:24.000Z\",\n        \"user\": {\n            \"userId\": 1,\n            \"email\": \"test@test.rs\",\n            \"passwordHash\": \"DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F\",\n            \"forename\": \"Pera\",\n            \"surname\": \"0\",\n            \"phoneNumber\": \"+381631458753\",\n            \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n        },\n        \"cartArticles\": [\n            {\n                \"cartArticleId\": 5,\n                \"cartId\": 3,\n                \"articleId\": 2,\n                \"quantity\": 2,\n                \"article\": {\n                    \"articleId\": 2,\n                    \"name\": \"ACME HD11 1024GB\",\n                    \"categoryId\": 1,\n                    \"excerpt\": \"Neki kratak tekst 2...\",\n                    \"description\": \"Neki duzi tekst o proizvodi 2...\",\n                    \"status\": \"visible\",\n                    \"isPromoted\": 1,\n                    \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n                    \"category\": {\n                        \"categoryId\": 1,\n                        \"name\": \"Bela Tehnika\",\n                        \"imagePath\": \"test\",\n                        \"parentCategoryId\": null\n                    },\n                    \"articlePrices\": [\n                        {\n                            \"articlePriceId\": 3,\n                            \"articleId\": 2,\n                            \"price\": \"56.77\",\n                            \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n                        },\n                        {\n                            \"articlePriceId\": 6,\n                            \"articleId\": 2,\n                            \"price\": \"57.11\",\n                            \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/order/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/order/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "12005"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2ee5-AfjNl0aB7kWhE797xG7ttTbzMn4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 13 Sep 2020 17:25:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"orderId\": 1,\n        \"createdAt\": \"2020-08-31T18:13:22.000Z\",\n        \"cartId\": 1,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 1,\n            \"userId\": 1,\n            \"createdAt\": \"2020-08-31T17:31:56.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 1,\n                    \"cartId\": 1,\n                    \"articleId\": 1,\n                    \"quantity\": 5,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"WHIRLPOOL Mašina za pranje veša FWL61252W\",\n                        \"categoryId\": 4,\n                        \"excerpt\": \"0fewfwe\",\n                        \"description\": \"Energetski razred: A++ \\r\\nKapacitet pranja: 6kg\\r\\nBroj obrtaja centrifuge:1200 obr/min\\r\\nNivo buke:63 dB\",\n                        \"status\": \"available\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-20T20:14:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 4,\n                            \"name\": \"Ves Masine\",\n                            \"imagePath\": \"0test\",\n                            \"parentCategoryId\": 1\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2020-08-20T21:20:01.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.00\",\n                                \"createdAt\": \"2020-08-20T21:20:15.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 2,\n                    \"cartId\": 1,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"Neki kratak tekst 2...\",\n                        \"description\": \"Neki duzi tekst o proizvodi 2...\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 2,\n                                \"price\": \"56.77\",\n                                \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 6,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 3,\n        \"createdAt\": \"2020-08-31T20:12:19.000Z\",\n        \"cartId\": 2,\n        \"status\": \"accepted\",\n        \"cart\": {\n            \"cartId\": 2,\n            \"userId\": 1,\n            \"createdAt\": \"2020-08-31T18:16:43.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 4,\n                    \"cartId\": 2,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"Neki kratak tekst 2...\",\n                        \"description\": \"Neki duzi tekst o proizvodi 2...\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 2,\n                                \"price\": \"56.77\",\n                                \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 6,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 4,\n        \"createdAt\": \"2020-08-31T20:13:07.000Z\",\n        \"cartId\": 3,\n        \"status\": \"accepted\",\n        \"cart\": {\n            \"cartId\": 3,\n            \"userId\": 1,\n            \"createdAt\": \"2020-08-31T20:12:24.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 5,\n                    \"cartId\": 3,\n                    \"articleId\": 2,\n                    \"quantity\": 2,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"Neki kratak tekst 2...\",\n                        \"description\": \"Neki duzi tekst o proizvodi 2...\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 2,\n                                \"price\": \"56.77\",\n                                \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 6,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 5,\n        \"createdAt\": \"2020-08-31T20:14:47.000Z\",\n        \"cartId\": 4,\n        \"status\": \"rejected\",\n        \"cart\": {\n            \"cartId\": 4,\n            \"userId\": 1,\n            \"createdAt\": \"2020-08-31T20:13:52.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 6,\n                    \"cartId\": 4,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"WHIRLPOOL Mašina za pranje veša FWL61252W\",\n                        \"categoryId\": 4,\n                        \"excerpt\": \"0fewfwe\",\n                        \"description\": \"Energetski razred: A++ \\r\\nKapacitet pranja: 6kg\\r\\nBroj obrtaja centrifuge:1200 obr/min\\r\\nNivo buke:63 dB\",\n                        \"status\": \"available\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-20T20:14:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 4,\n                            \"name\": \"Ves Masine\",\n                            \"imagePath\": \"0test\",\n                            \"parentCategoryId\": 1\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2020-08-20T21:20:01.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.00\",\n                                \"createdAt\": \"2020-08-20T21:20:15.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 6,\n        \"createdAt\": \"2020-09-09T12:53:29.000Z\",\n        \"cartId\": 5,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 5,\n            \"userId\": 1,\n            \"createdAt\": \"2020-09-08T23:40:29.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 7,\n                    \"cartId\": 5,\n                    \"articleId\": 1,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 1,\n                        \"name\": \"WHIRLPOOL Mašina za pranje veša FWL61252W\",\n                        \"categoryId\": 4,\n                        \"excerpt\": \"0fewfwe\",\n                        \"description\": \"Energetski razred: A++ \\r\\nKapacitet pranja: 6kg\\r\\nBroj obrtaja centrifuge:1200 obr/min\\r\\nNivo buke:63 dB\",\n                        \"status\": \"available\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-20T20:14:19.000Z\",\n                        \"category\": {\n                            \"categoryId\": 4,\n                            \"name\": \"Ves Masine\",\n                            \"imagePath\": \"0test\",\n                            \"parentCategoryId\": 1\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 1,\n                                \"articleId\": 1,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2020-08-20T21:20:01.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 2,\n                                \"articleId\": 1,\n                                \"price\": \"43.00\",\n                                \"createdAt\": \"2020-08-20T21:20:15.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 8,\n                    \"cartId\": 5,\n                    \"articleId\": 5,\n                    \"quantity\": 6,\n                    \"article\": {\n                        \"articleId\": 5,\n                        \"name\": \"testGB1\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"fwefwef\",\n                        \"description\": \"fwefewfewfwefwe fwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwe\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-09-01T14:33:12.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 8,\n                                \"articleId\": 5,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2020-09-01T14:36:28.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 7,\n        \"createdAt\": \"2020-09-09T13:26:42.000Z\",\n        \"cartId\": 6,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 6,\n            \"userId\": 1,\n            \"createdAt\": \"2020-09-09T12:53:32.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 10,\n                    \"cartId\": 6,\n                    \"articleId\": 2,\n                    \"quantity\": 3,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"Neki kratak tekst 2...\",\n                        \"description\": \"Neki duzi tekst o proizvodi 2...\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 2,\n                                \"price\": \"56.77\",\n                                \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 6,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 9,\n                    \"cartId\": 6,\n                    \"articleId\": 5,\n                    \"quantity\": 3,\n                    \"article\": {\n                        \"articleId\": 5,\n                        \"name\": \"testGB1\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"fwefwef\",\n                        \"description\": \"fwefewfewfwefwe fwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwe\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-09-01T14:33:12.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 8,\n                                \"articleId\": 5,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2020-09-01T14:36:28.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 8,\n        \"createdAt\": \"2020-09-09T14:41:05.000Z\",\n        \"cartId\": 7,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 7,\n            \"userId\": 1,\n            \"createdAt\": \"2020-09-09T14:40:57.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 11,\n                    \"cartId\": 7,\n                    \"articleId\": 5,\n                    \"quantity\": 5,\n                    \"article\": {\n                        \"articleId\": 5,\n                        \"name\": \"testGB1\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"fwefwef\",\n                        \"description\": \"fwefewfewfwefwe fwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwefwefewfewfwefwe\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 0,\n                        \"createdAt\": \"2020-09-01T14:33:12.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 8,\n                                \"articleId\": 5,\n                                \"price\": \"45.00\",\n                                \"createdAt\": \"2020-09-01T14:36:28.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"orderId\": 9,\n        \"createdAt\": \"2020-09-13T15:31:06.000Z\",\n        \"cartId\": 8,\n        \"status\": \"pending\",\n        \"cart\": {\n            \"cartId\": 8,\n            \"userId\": 1,\n            \"createdAt\": \"2020-09-13T15:31:07.000Z\",\n            \"user\": {\n                \"userId\": 1,\n                \"email\": \"test@test.rs\",\n                \"passwordHash\": \"8D2F4D9C7F87141F0810F1ACD6C0462FF0319BB049AA88EA4E310649628091DE316CF1392E19AF4F0A327826545F63E4E969838F5E7D572A475DE3255B738ACA\",\n                \"forename\": \"Pera\",\n                \"surname\": \"0\",\n                \"phoneNumber\": \"+381631458753\",\n                \"postalAddress\": \"Random adresa bb, Glavna Luka, Nedodjija\"\n            },\n            \"cartArticles\": [\n                {\n                    \"cartArticleId\": 13,\n                    \"cartId\": 8,\n                    \"articleId\": 2,\n                    \"quantity\": 1,\n                    \"article\": {\n                        \"articleId\": 2,\n                        \"name\": \"ACME HD11 1024GB\",\n                        \"categoryId\": 1,\n                        \"excerpt\": \"Neki kratak tekst 2...\",\n                        \"description\": \"Neki duzi tekst o proizvodi 2...\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-21T17:54:03.000Z\",\n                        \"category\": {\n                            \"categoryId\": 1,\n                            \"name\": \"Bela Tehnika\",\n                            \"imagePath\": \"http://localhost:4000/storage/2020911-0613512116-eminem.jpg\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 3,\n                                \"articleId\": 2,\n                                \"price\": \"56.77\",\n                                \"createdAt\": \"2020-08-21T17:54:04.000Z\"\n                            },\n                            {\n                                \"articlePriceId\": 6,\n                                \"articleId\": 2,\n                                \"price\": \"57.11\",\n                                \"createdAt\": \"2020-08-27T22:38:17.000Z\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"cartArticleId\": 12,\n                    \"cartId\": 8,\n                    \"articleId\": 3,\n                    \"quantity\": 4,\n                    \"article\": {\n                        \"articleId\": 3,\n                        \"name\": \"ACME HD11 1TB.\",\n                        \"categoryId\": 2,\n                        \"excerpt\": \"neki kratak opis\",\n                        \"description\": \"neki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehheheheheneki duzi opis ehehehhehehehe\",\n                        \"status\": \"visible\",\n                        \"isPromoted\": 1,\n                        \"createdAt\": \"2020-08-21T17:56:39.000Z\",\n                        \"category\": {\n                            \"categoryId\": 2,\n                            \"name\": \"Mali Kucni Aparati\",\n                            \"imagePath\": \"0tee\",\n                            \"parentCategoryId\": null\n                        },\n                        \"articlePrices\": [\n                            {\n                                \"articlePriceId\": 4,\n                                \"articleId\": 3,\n                                \"price\": \"56.77\",\n                                \"createdAt\": \"2020-08-21T17:56:39.000Z\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlkIjoxMCwiaWRlbnRpdHkiOiJhZG1pbiIsImV4cCI6MTYwMDAxODIyNy4xMDcsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI2LjUiLCJpYXQiOjE2MDAwMTc5Mjd9.TJOdKhp02FV5OCur2eemsfPqMlbQgxu6TGPAl4iGHVA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1556b2df-cfe4-4cc6-a6c9-10166aac4a4f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2510204-bdab-4f88-ae06-b0c9bbf0c39c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1764,7 +2376,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlkIjoxMCwiaWRlbnRpdHkiOiJhZG1pbiIsImV4cCI6MTU5OTkzOTUwMy44NTcsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI2LjMiLCJpYXQiOjE1OTg3Mjk5MDN9.lVANjr1yElAYuYi4C5BERHmtYinpb1k3QbWZms4-qRk",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlkIjoxLCJpZGVudGl0eSI6InRlc3RAdGVzdC5ycyIsImV4cCI6MTYwMDAwNDEwOS44NjIsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI2LjUiLCJpYXQiOjE2MDAwMDM4MDl9.fFvP9cWl_YarI-vNn6GHrD1qBnYWHgUIpMOEdYV6xbY",
 				"type": "string"
 			}
 		]
