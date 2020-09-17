@@ -31,6 +31,10 @@ import { UserCartController } from './controllers/api/user.cart.controller';
 import { OrderService } from './services/order/order.service';
 import { AdministratorOrderController } from './controllers/api/administrator.order.controller';
 import { UserToken } from './entities/user-token.entity';
+import { AdministratorToken } from './entities/administrator-token.entity';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { MailConfig } from 'config/mail.config';
+import { OrderMailer } from './services/order/order.mailer.service';
 
 
 @Module({
@@ -54,7 +58,8 @@ import { UserToken } from './entities/user-token.entity';
         Order,
         Photo,
         User,
-        UserToken,
+        UserToken,,
+        AdministratorToken,
       ]
     }),
     TypeOrmModule.forFeature([ 
@@ -70,8 +75,17 @@ import { UserToken } from './entities/user-token.entity';
         Photo,
         User,
         UserToken,
-     ])
-  ],
+        AdministratorToken,
+      ]),
+      MailerModule.forRoot({
+        transport: 'smtps://' + MailConfig.username + ':' +
+                                MailConfig.password + '@' +
+                                MailConfig.hostname,
+        defaults: {
+          from: MailConfig.senderEmail,
+        },
+      }),
+    ],
   controllers: [
     AppController,
     AdministratorController,
@@ -91,6 +105,7 @@ import { UserToken } from './entities/user-token.entity';
     UserService,
     CartService,
     OrderService,
+    OrderMailer,
   ],
   exports: [
     AdministratorService,
